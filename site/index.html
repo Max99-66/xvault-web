@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><meta name="color-scheme" content="light"><meta name="referrer" content="no-referrer"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="隐匣"><title>隐匣</title>
+<link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon.png"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header><a class="brand" href="./" aria-label="隐匣首页"><img src="./icon.svg" alt="" width="36" height="36"><h1>隐匣</h1></a><nav aria-label="主导航"><button data-page="library" class="active" aria-current="page">媒体库</button><button data-page="folders">分类</button></nav><button id="storage" class="icon-button" aria-label="存储与帮助" title="存储与帮助">ⓘ</button></header>
+<main>
+<section id="library" class="page" aria-label="媒体库">
+<form id="resolve-form" class="link-box"><label class="sr-only" for="post-url">X 帖子链接</label><input id="post-url" type="url" inputmode="url" autocomplete="off" placeholder="粘贴 X 帖子链接" required><button id="paste" type="button" class="quiet" title="从剪贴板粘贴">粘贴</button><button id="resolve-button" type="submit">解析</button></form>
+<section id="results" class="results" aria-label="解析结果" hidden><div class="section-bar"><h2 id="result-count"></h2><div><button id="add-all" class="quiet">全部加入</button><button id="close-results" class="icon-button" aria-label="收起解析结果">×</button></div></div><div id="result-list"></div></section>
+<div class="toolbar"><div class="filters" role="group" aria-label="媒体类型"><button data-filter="all" class="active" aria-pressed="true">全部</button><button data-filter="video" aria-pressed="false">视频</button><button data-filter="photo" aria-pressed="false">图片</button><button data-filter="favorite" aria-pressed="false">收藏</button><button data-filter="downloaded" aria-pressed="false">已下载</button></div><input id="search" type="search" placeholder="搜索" aria-label="搜索标题、作者、标签"></div>
+<div class="section-bar library-meta"><select id="folder-filter" aria-label="按分类筛选"><option value="">所有分类</option></select><span id="summary">0 项</span></div>
+<div id="grid" class="media-grid"></div><div id="empty" class="empty"><img src="./icon.svg" alt="" width="60" height="60"><p id="empty-text">粘贴链接，添加视频或图片</p></div>
+</section>
+<section id="folders" class="page" aria-label="分类" hidden><div class="section-bar"><h2>分类</h2></div><form id="folder-form" class="link-box"><input id="folder-name" placeholder="分类名称" aria-label="分类名称" maxlength="40" required><button type="submit">新建</button></form><div id="folder-list" class="folder-grid"></div></section>
+</main>
+<dialog id="viewer" aria-label="媒体播放"><div class="viewer-bar"><span id="viewer-mode"></span><button id="close-viewer" class="icon-button" aria-label="关闭播放">×</button></div><div id="viewer-media"></div><div id="viewer-info"></div><div class="viewer-actions"><button id="export-file" class="quiet" hidden>导出到文件</button><a id="source-link" target="_blank" rel="noopener noreferrer">原帖 ↗</a></div></dialog>
+<dialog id="editor" aria-labelledby="editor-title"><form id="edit-form"><h2 id="editor-title">整理媒体</h2><label>标题<input id="edit-title" maxlength="240" required></label><label>分类<select id="edit-folder"></select></label><label>标签<input id="edit-tags" placeholder="用逗号分隔" maxlength="300"></label><div class="dialog-actions"><button id="delete-media" type="button" class="danger quiet">删除</button><button id="cancel-edit" type="button" class="quiet">取消</button><button type="submit">保存</button></div></form></dialog>
+<dialog id="storage-dialog" aria-labelledby="storage-title"><h2 id="storage-title">存储与帮助</h2><p id="storage-size"></p><p>下载保存在当前浏览器中，不会自动写入相册，也不会上传到 GitHub。</p><p>清除网站数据、使用无痕模式或浏览器回收空间，可能使本地媒体丢失。重要内容请导出到「文件」。</p><p>仅解析公开帖子，通过 FxTwitter 获取媒体信息。原帖删除或服务变化可能影响解析。</p><p>iPhone：在 Safari 中选择「分享 → 添加到主屏幕」，之后从主屏幕打开使用。</p><div class="dialog-actions"><button id="persist" class="quiet">保留本地存储</button><button id="close-storage">完成</button></div></dialog>
+<div id="toast" role="status" aria-live="polite" hidden></div><noscript>请开启 JavaScript 后使用隐匣。</noscript><script type="module" src="./app.js"></script>
+</body></html>
